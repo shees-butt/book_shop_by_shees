@@ -1,15 +1,21 @@
 <template>
   <v-card>
-    <v-tabs v-model="tab" class="bg-grey-lighten-5" color="deep-orange-accent-2" align-tabs="center" slider-color="deep-orange-accent-2">
-      <v-tab>
-        <router-link to="/products"  class="nav-link">Products</router-link>
-      </v-tab>
-      <v-tab>
-        <router-link to="/favorites"  class="nav-link">Favorites</router-link>
-      </v-tab>
-      <v-tab>
-        <router-link to="/cart" class="nav-link">Cart</router-link>
-      </v-tab>
+    <v-tabs
+      v-model="tab"
+      class="bg-grey-lighten-5"
+      color="deep-orange-accent-2"
+      align-tabs="center"
+      slider-color="deep-orange-accent-2"
+    >
+      <router-link to="/products" class="nav-link">
+        <v-tab> Products </v-tab></router-link
+      >
+      <router-link to="/favorites" class="nav-link"
+        ><v-tab> Favorites </v-tab></router-link
+      >
+      <router-link to="/cart" class="nav-link">
+        <v-tab> Cart </v-tab></router-link
+      >
     </v-tabs>
     <router-view></router-view>
   </v-card>

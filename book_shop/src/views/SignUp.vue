@@ -8,28 +8,34 @@
             <v-text-field
               v-model="name"
               label="Name"
+              prepend-inner-icon="mdi-account-outline"
               required
               :error-messages="nameErrors"
               :error="submitted && nameErrors.length > 0"
             ></v-text-field>
             <v-text-field
+              v-model="email"
+              label="E-mail"
+              prepend-inner-icon="mdi-email-outline"
+              required
+              type="email"
+              :error-messages="emailErrors"
+              :error="submitted && emailErrors.length > 0"
+            ></v-text-field>
+            <v-text-field
               v-model="password"
               label="Password"
-              type="password"
+              prepend-inner-icon="mdi-lock-outline"
+              :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+              :type="visible ? 'text' : 'password'"
+              @click:append-inner="visible = !visible"
               required
               pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=]).*$"
               title="Password must contain at least one uppercase letter, one lowercase letter, one number, and one symbol."
               :error-messages="passwordErrors"
               :error="submitted && passwordErrors.length > 0"
             ></v-text-field>
-            <v-text-field
-              v-model="email"
-              label="E-mail"
-              required
-              type="email"
-              :error-messages="emailErrors"
-              :error="submitted && emailErrors.length > 0"
-            ></v-text-field>
+
             <v-btn color="primary" class="mr-4" type="submit">Submit</v-btn>
             <p class="text-center pt-5">
               Already have an account?
@@ -49,7 +55,8 @@ export default {
       name: "",
       email: "",
       password: "",
-      submitted: false, // Added to track form submission
+      visible: false,
+      submitted: false,
     };
   },
   computed: {

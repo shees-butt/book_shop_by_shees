@@ -2,10 +2,7 @@
   <NavBar />
   <SubNav />
 
-  <BookList />
-  <BookList />
-
-  <BookList />
+  <BookList :books="books" />
 
   <div class="text-center">
     <v-pagination v-model="page" :length="10" rounded="circle"></v-pagination>
@@ -31,6 +28,14 @@ export default {
     return {
       page: 1,
     };
+  },
+  computed: {
+    books() {
+      return this.$store.state.books;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("getBooks");
   },
 };
 </script>

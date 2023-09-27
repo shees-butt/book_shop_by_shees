@@ -2,7 +2,7 @@
   <NavBar />
   <SubNav />
 
-  <div>Cart</div>
+  <!-- <div>Cart</div> -->
   <Footer />
 </template>
 <script>

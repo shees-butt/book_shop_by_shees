@@ -25,9 +25,10 @@ const routes = [
         component: () => import('@/views/Login.vue'),
       },
       {
-        path: '/bookdetails',
+        path: '/bookdetails/:id',
         name: 'bookdetails',
         component: () => import('@/views/Bookdetails.vue'),
+        props: true
       },
       { path: "/products", name: "tab1", component: () => import('@/views/Products.vue') },
       { path: "/favorites", name: "tab2", component: () => import('@/views/Favorites.vue') },

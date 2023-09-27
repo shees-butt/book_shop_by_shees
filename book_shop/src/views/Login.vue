@@ -7,6 +7,7 @@
             <h1 class="text-center mb-5">Login</h1>
             <v-text-field
               v-model="email"
+              prepend-inner-icon="mdi-email-outline"
               label="E-mail"
               required
               type="email"
@@ -15,8 +16,11 @@
             ></v-text-field>
             <v-text-field
               v-model="password"
+              prepend-inner-icon="mdi-lock-outline"
+              :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+              :type="visible ? 'text' : 'password'"
+              @click:append-inner="visible = !visible"
               label="Password"
-              type="password"
               required
               :error-messages="passwordErrors"
               :error="submitted && passwordErrors.length > 0"
@@ -39,7 +43,8 @@ export default {
     return {
       email: "",
       password: "",
-      submitted: false, // Added to track form submission
+      submitted: false,
+      visible: false,
     };
   },
   computed: {
@@ -60,17 +65,14 @@ export default {
   },
   methods: {
     submitForm() {
-      this.submitted = true; // Set submitted to true
+      this.submitted = true;
       if (this.$refs.loginForm.checkValidity()) {
         console.log("Form is valid. Logging in...");
-        // Perform the actual login action here
       } else {
         console.log("Form is invalid. Please correct the errors.");
       }
     },
     isValidEmail(email) {
-      // Implement a basic email format validation here
-      // You can use a regular expression or a more comprehensive library for email validation
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     },
   },
@@ -86,27 +88,25 @@ export default {
 }
 .background-container {
   background-image: url("https://images.unsplash.com/photo-1579370318443-8da816457e3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
-  background-size: cover; /* Ensure the image covers the entire container */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  background-position: center center; /* Center the image horizontally and vertically */
-  height: 100vh; /* Set the container's height to the viewport height */
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center center;
+  height: 100vh; 
   display: flex;
   justify-content: center;
   align-items: center;
 }
-/* Center the card vertically on small screens */
 @media screen and (max-width: 600px) {
   .elevation-12 {
     margin-top: 20vh;
   }
 }
 
-/* Style for invalid input fields */
+
 .v-text-field.error--text {
   border-color: red;
 }
 
-/* Style for valid input fields */
 .v-text-field.success--text {
   border-color: green;
 }

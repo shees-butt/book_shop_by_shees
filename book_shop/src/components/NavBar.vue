@@ -1,6 +1,13 @@
 <template>
   <v-app-bar app color="deep-orange-accent-2" class="compact-app-bar">
-    <v-toolbar-title class="ml-0 pl-3"><router-link class="text-decoration-none text-white" to="/">Book Haven</router-link></v-toolbar-title>
+    <v-toolbar-title class="ml-0 pl-3"
+      ><router-link class="text-decoration-none text-white" to="/"
+        >Book Haven</router-link
+      ></v-toolbar-title
+    >
+    <div class="text-center flex-grow-1">
+      Where Imagination Finds Its Home – Welcome to Book Haven.
+    </div>
 
     <!-- Search Bar -->
     <v-text-field
@@ -12,6 +19,22 @@
     ></v-text-field>
   </v-app-bar>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      searchText: "", // Initialize searchText with an appropriate default value
+      // Other data properties
+    };
+  },
+  methods: {
+    filterProducts() {
+      // Your filtering logic here
+    },
+  },
+};
+</script>
 
 <style scoped>
 /* Add some custom styles for better appearance and responsiveness */

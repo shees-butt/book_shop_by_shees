@@ -22,5 +22,6 @@ export default {
     SingleBook,
     Reviews,
   },
+  props: ['id']
 };
 </script>
