@@ -1,3 +1,6 @@
 export default {
-   books: []
+   books: [],
+   book: null,
+   user: null,
+   token: null,
   };

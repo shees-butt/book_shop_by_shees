@@ -68,6 +68,9 @@ export default {
       this.submitted = true;
       if (this.$refs.loginForm.checkValidity()) {
         console.log("Form is valid. Logging in...");
+        // Call your login API here and handle the response
+        // Redirect to the home page if login is successful
+        this.$router.push("/");
       } else {
         console.log("Form is invalid. Please correct the errors.");
       }
@@ -100,14 +103,5 @@ export default {
   .elevation-12 {
     margin-top: 20vh;
   }
-}
-
-
-.v-text-field.error--text {
-  border-color: red;
-}
-
-.v-text-field.success--text {
-  border-color: green;
 }
 </style>

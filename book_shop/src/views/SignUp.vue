@@ -88,15 +88,43 @@ export default {
     },
   },
   methods: {
-    submitForm() {
-      this.submitted = true; // Set submitted to true
-      if (this.$refs.signupForm.checkValidity()) {
-        console.log("Form is valid. Submitting...");
-        // Perform the actual form submission here
-      } else {
-        console.log("Form is invalid. Please correct the errors.");
+    async submitForm() {
+      try {
+        this.submitted = true; // Set submitted to true
+        if (this.$refs.signupForm.checkValidity()) {
+          const userData = {
+            name: this.name,
+            email: this.email,
+            password: this.password,
+          };
+
+          // Dispatch the signup action from the Vuex store
+          const user = await this.$store.dispatch("signup", userData);
+
+          // Handle successful signup if needed
+          console.log("User signed up:", user);
+
+          this.clearForm();
+        } else {
+          console.log("Form is invalid. Please correct the errors.");
+        }
+      } catch (error) {
+        // Handle signup error (e.g., display an error message)
+        console.error("Signup error:", error);
       }
     },
+
+    clearForm() {
+      // Reset the form fields to their initial empty state
+      this.name = "";
+      this.email = "";
+      this.password = "";
+      this.visible = false;
+      this.submitted = false;
+
+      // Optionally, you can also reset any specific error messages here if needed
+    },
+
     isValidEmail(email) {
       // Implement a basic email format validation here
       // You can use a regular expression or a more comprehensive library for email validation

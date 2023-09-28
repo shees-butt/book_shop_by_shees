@@ -17,6 +17,8 @@
       prepend-inner-icon="mdi-magnify"
       @input="filterProducts"
     ></v-text-field>
+    <!-- Add the following line for the Logout button -->
+    <v-btn color="error" @click="handleLogout">Logout</v-btn>
   </v-app-bar>
 </template>
 
@@ -31,6 +33,12 @@ export default {
   methods: {
     filterProducts() {
       // Your filtering logic here
+    },
+    // Add this method for Logout
+    handleLogout() {
+      // Call your logout API here if needed
+      // Redirect to the login page or another appropriate route after logout
+      this.$router.push("/login");
     },
   },
 };

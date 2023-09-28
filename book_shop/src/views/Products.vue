@@ -3,10 +3,6 @@
   <SubNav />
 
   <BookList :books="books" />
-
-  <div class="text-center">
-    <v-pagination v-model="page" :length="10" rounded="circle"></v-pagination>
-  </div>
   <Footer />
 </template>
 <script>
@@ -23,11 +19,6 @@ export default {
     SubNav,
     Footer,
     BookList,
-  },
-  data() {
-    return {
-      page: 1,
-    };
   },
   computed: {
     books() {

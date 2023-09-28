@@ -30,7 +30,7 @@
         </v-img>
       </v-carousel-item>
     </v-carousel>
-    <BookList/>
+    <BookList :books="books"/>
     
     <Footer />
   </div>
@@ -51,6 +51,15 @@ export default {
     Footer,
     BookList
   },
+  computed: {
+    books() {
+      return this.$store.state.books;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("getBooks");
+  },
+  
   data() {
     return {
       slides: [
