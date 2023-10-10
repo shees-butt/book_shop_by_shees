@@ -16,7 +16,7 @@
         </div>
         <!-- Option to Add a Review -->
         <v-form @submit.prevent="addReview">
-          <v-text-field v-model="newReview.title" label="Review Title" required></v-text-field>
+          <v-text-field v-model="newReview.title" label="Review" required></v-text-field>
           <v-rating v-model="newReview.rating" background-color="grey" color="deep-orange-accent-2" :half-increments="true" label="Rating"></v-rating>
           <div><v-btn type="submit" color="deep-orange-accent-2" variant="outlined">Submit Review</v-btn></div>
         </v-form>

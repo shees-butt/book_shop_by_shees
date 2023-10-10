@@ -1,4 +1,3 @@
-// actions.js
 import axios from "axios";
 
 // For Show All Books in Products
@@ -24,8 +23,7 @@ export const signup = async ({ commit }, userData) => {
 
     const user = response.data;
 
-    commit("setUser", user); // Ensure the mutation name matches
-
+    commit("SET_USER", user);
     return user;
   } catch (error) {
     throw error;
@@ -33,27 +31,26 @@ export const signup = async ({ commit }, userData) => {
 };
 
 // For Login
-export const login = async ({ commit }, { email, password }) => {
+export const userLogin = async ({ commit }, loginData) => {
   try {
-    const response = await axios.post("http://10.0.10.211:3300/api/login", {
-      email,
-      password,
-    });
+    const response = await axios.post('http://10.0.10.211:3300/api/login', loginData);
 
-    const token = response.data.token;
-    commit("SET_TOKEN", token); // Set the user's token in the state
-    // Save the token to local storage for persistent login
-    localStorage.setItem("token", token);
+    const userData = response.data.user_id;
+    const token = response.data.access_token;
 
-    return token;
+    // Store user data and token in localStorage
+    localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem('token', token);
+
+    // Commit user data and token to mutations
+    commit('USER_LOGIN', userData);
+    commit('USER_TOKEN', token);
   } catch (error) {
     throw error;
   }
 };
 
-// For Logout
-export const logout = ({ commit }) => {
-  // Clear the user's token and remove it from local storage
-  commit("CLEAR_TOKEN");
-  localStorage.removeItem("token");
+// add an item to the cart
+export const addToCart = ({ commit }, cartItem) => {
+  commit("ADD_TO_CART", cartItem);
 };

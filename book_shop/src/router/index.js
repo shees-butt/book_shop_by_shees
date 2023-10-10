@@ -24,15 +24,21 @@ const routes = [
         name: 'login',
         component: () => import('@/views/Login.vue'),
       },
+      { path: "/products", name: "tab1", component: () => import('@/views/Products.vue') },
+      { path: "/favorites", name: "tab2", component: () => import('@/views/Favorites.vue') },
+      { path: "/cart", name: "tab3", component: () => import('@/views/Cart.vue') },
       {
         path: '/bookdetails/:id',
         name: 'bookdetails',
         component: () => import('@/views/Bookdetails.vue'),
         props: true
       },
-      { path: "/products", name: "tab1", component: () => import('@/views/Products.vue') },
-      { path: "/favorites", name: "tab2", component: () => import('@/views/Favorites.vue') },
-      { path: "/cart", name: "tab3", component: () => import('@/views/Cart.vue') },
+      {
+        path: "/checkout/:bookId",
+        name: "checkout",
+        component: () => import('@/views/CheckOut.vue'),
+        props: true, // Allow passing props to the Checkout component
+      },
     ],
   },
 ]

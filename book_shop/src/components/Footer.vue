@@ -37,13 +37,11 @@
 export default {
   data: () => ({
     links: ["Home", "About Us", "Books", "Contact Us"],
-    email: "", // Data property to store the email for the newsletter
+    email: "",
   }),
   methods: {
     subscribe() {
-      // Implement the newsletter subscription logic here
       console.log("Subscribed with email:", this.email);
-      // You can send the email to your backend for processing, display a confirmation message, etc.
     },
   },
 };

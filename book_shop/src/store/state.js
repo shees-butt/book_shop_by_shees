@@ -3,4 +3,6 @@ export default {
    book: null,
    user: null,
    token: null,
+   cart: [],
+   favorites: [],
   };

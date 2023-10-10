@@ -37,6 +37,7 @@
   </v-container>
 </template>
 
+
 <script>
 export default {
   data() {
@@ -68,9 +69,18 @@ export default {
       this.submitted = true;
       if (this.$refs.loginForm.checkValidity()) {
         console.log("Form is valid. Logging in...");
-        // Call your login API here and handle the response
-        // Redirect to the home page if login is successful
-        this.$router.push("/");
+        const loginData = {
+          email: this.email,
+          password: this.password,
+        };
+        this.$store
+          .dispatch("userLogin", loginData)
+          .then(() => {
+            this.$router.push("/");
+          })
+          .catch((error) => {
+            console.log("Failed Login", error.response);
+          });
       } else {
         console.log("Form is invalid. Please correct the errors.");
       }
@@ -91,10 +101,10 @@ export default {
 }
 .background-container {
   background-image: url("https://images.unsplash.com/photo-1579370318443-8da816457e3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
-  background-size: cover; 
-  background-repeat: no-repeat; 
+  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center center;
-  height: 100vh; 
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
